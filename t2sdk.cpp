@@ -375,6 +375,32 @@ PHP_METHOD(T2Connection, p_req333104)
     RETURN_ZVAL(result, 1, 0);
 }
 
+PHP_METHOD(T2Connection, p_req333100)
+{
+    T2Connection *t2connection;
+    t2connection_object *obj = (t2connection_object *)zend_object_store_get_object(
+        getThis() TSRMLS_CC);
+
+    char *sort_direction;
+    uint sort_direction_len;
+    char *position_str;
+    uint position_str_len;
+    uint request_num;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ssl", &sort_direction, &sort_direction_len, &position_str, &position_str_len, &request_num) == FAILURE) {
+        RETURN_NULL();
+    }
+
+    zval * result;
+    t2connection = obj->t2connection;
+    if (t2connection != NULL) {
+        result = t2connection->req333100(sort_direction[0], position_str, request_num);
+    }
+
+    RETURN_ZVAL(result, 1, 0);
+}
+
+
 PHP_METHOD(T2Connection, p_req333101)
 {
     T2Connection *t2connection;
@@ -771,6 +797,7 @@ zend_function_entry t2connection_methods[] = {
     PHP_ME(T2Connection,  p_req333140,  NULL, ZEND_ACC_PUBLIC)  //预约委托
     PHP_ME(T2Connection,  p_req333104,  NULL, ZEND_ACC_PUBLIC)  //证券持仓查询
     PHP_ME(T2Connection,  p_req333101,  NULL, ZEND_ACC_PUBLIC)  //证券委托查询  
+    PHP_ME(T2Connection,  p_req333100,  NULL, ZEND_ACC_PUBLIC)  //可撤单委托查询  
     PHP_ME(T2Connection,  p_req339303,  NULL, ZEND_ACC_PUBLIC)  //历史证券委托查询
     PHP_ME(T2Connection,  p_req333102,  NULL, ZEND_ACC_PUBLIC)  //成交查询
     PHP_ME(T2Connection,  p_req339304,  NULL, ZEND_ACC_PUBLIC)  //历史成交查询
