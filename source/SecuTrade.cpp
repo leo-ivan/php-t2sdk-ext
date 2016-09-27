@@ -394,14 +394,12 @@ int SecuRequestMode::Login(char *fund_account, char *password, IF2UnPacker * &lp
 		goto EXIT;
 	}
 
-	printf("发送功能331100成功, 返回接收句柄: %d!\r\n", hSend);
+	//printf("发送功能331100成功, 返回接收句柄: %d!\r\n", hSend);
 
     //iRet = lpConnection->RecvBizEx(hSend, (void **)&pUnPacker, &pRetData, 1000);
     //int a;  int &ra=a;  //定义引用ra,它是变量a的引用，即别名
 
-	puts("before RecvBizMsg");
 	hSend = lpConnection->RecvBizMsg(hSend,&lpBizMessageRecv,1000);
-	puts("after RecvBizMsg");
 
 
 	if(hSend != 0)
@@ -490,9 +488,7 @@ int SecuRequestMode::SendRequest(IBizMessage * &lpBizMessage, IF2Packer * &lpPac
 	//printf("发送功能333002成功, 返回接收句柄: %d!\r\n", hSend);
 
         //iRet = T2SDK_G(g_pConnection)->RecvBizEx(hSend,(void **)&pUnPacker,&pRetData,1000);
-    printf("hSend1:%d \n", hSend);
 	hSend = lpConnection->RecvBizMsg(hSend, &lpBizMessageRecv, 5000);
-	printf("hSend2:%d \n", hSend);
 	if(hSend != 0){
 		errorNo = hSend;
 		strcpy(errorMsg, lpConnection->GetErrorMsg(hSend));
@@ -506,7 +502,7 @@ int SecuRequestMode::SendRequest(IBizMessage * &lpBizMessage, IF2Packer * &lpPac
         	errorNo = iReturnCode;
 			strcpy(errorMsg, lpBizMessageRecv->GetErrorInfo());
 			hSend = iReturnCode;
-        	printf("接收功能333002失败,errorNo:%d,errorInfo:%s\n",lpBizMessageRecv->GetReturnCode(),lpBizMessageRecv->GetErrorInfo());            
+        	printf("接收功能失败,errorNo:%d,errorInfo:%s\n",lpBizMessageRecv->GetReturnCode(),lpBizMessageRecv->GetErrorInfo());            
         }
         else if(iReturnCode==0) // 正确
         {
