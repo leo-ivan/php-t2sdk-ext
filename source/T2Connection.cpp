@@ -1554,7 +1554,7 @@ zval* T2Connection::req332250(char *bank_no, int entrust_no, int action_in, char
     //pPacker->AddField("exchange_type", 'S', 4);
     pPacker->AddField("bank_no", 'S', 4);
     pPacker->AddField("entrust_no", 'I', 8);
-    pPacker->AddField("actionId", 'I', 5);
+    pPacker->AddField("action_in", 'I', 5);
     pPacker->AddField("position_str", 'S');
     pPacker->AddField("request_num", 'I', 10);
 
