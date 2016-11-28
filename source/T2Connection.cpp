@@ -135,6 +135,7 @@ int T2Connection::connect(char * &error)
     if (!handle)  
     {  
         error = dlerror();
+        //printf("dlopen error %s file %s", error, this->lib_t2sdk_file);
         return -1;
     }  
 
@@ -1939,7 +1940,7 @@ zval* T2Connection::req331157()
 
 }
 
-zval* T2Connection::req339200(int start_date, int end_date, char *position_str, int request_num)
+zval* T2Connection::req339200(int begin_date, int end_date, char *position_str, int request_num)
 {
     IBizMessage* lpBizMessage = T2NewBizMessage();
     lpBizMessage->AddRef();
@@ -1981,7 +1982,7 @@ zval* T2Connection::req339200(int start_date, int end_date, char *position_str, 
     pPacker->AddField("user_token", 'S', 40);
     //pPacker->AddField("exchange_type", 'S', 4);
     pPacker->AddField("money_type", 'S', 3);
-    pPacker->AddField("start_date", 'I', 8);
+    pPacker->AddField("begin_date", 'I', 8);
     pPacker->AddField("end_date", 'I', 8);
     pPacker->AddField("position_str", 'S');
     pPacker->AddField("request_num", 'I', 5);
@@ -2000,7 +2001,7 @@ zval* T2Connection::req339200(int start_date, int end_date, char *position_str, 
     pPacker->AddStr(lp_SecuRequestMode->m_opUserToken.c_str());
 
     pPacker->AddStr("0");
-    pPacker->AddInt(start_date);
+    pPacker->AddInt(begin_date);
     pPacker->AddInt(end_date);
     pPacker->AddStr(position_str);
     pPacker->AddInt(request_num);

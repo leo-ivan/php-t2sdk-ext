@@ -12,7 +12,7 @@ ZEND_EXT_TYPE = zend_extension
 RE2C = exit 0;
 AWK = awk
 T2SDK_SHARED_LIBADD = -lstdc++
-shared_objects_t2sdk = t2sdk.lo source/T2Connection.lo source/CCallback.lo
+shared_objects_t2sdk = t2sdk.lo source/T2Connection.lo source/SecuTrade.lo source/SecuMD.lo Common/tool.lo Common/analyStr.lo
 PHP_PECL_EXTENSION = t2sdk
 PHP_MODULES = $(phplibdir)/t2sdk.la
 PHP_ZEND_EX =
@@ -177,12 +177,18 @@ distclean: clean
 
 .PHONY: all clean install distclean test
 .NOEXPORT:
-t2sdk.lo: /Users/caizixin/source/php-t2sdk-ext/t2sdk.cc
-	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/t2sdk.cc -o t2sdk.lo 
-source/T2Connection.lo: /Users/caizixin/source/php-t2sdk-ext/source/T2Connection.cc
-	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/source/T2Connection.cc -o source/T2Connection.lo 
-source/CCallback.lo: /Users/caizixin/source/php-t2sdk-ext/source/CCallback.cc
-	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/source/CCallback.cc -o source/CCallback.lo 
+t2sdk.lo: /Users/caizixin/source/php-t2sdk-ext/t2sdk.cpp
+	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/t2sdk.cpp -o t2sdk.lo 
+source/T2Connection.lo: /Users/caizixin/source/php-t2sdk-ext/source/T2Connection.cpp
+	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/source/T2Connection.cpp -o source/T2Connection.lo 
+source/SecuTrade.lo: /Users/caizixin/source/php-t2sdk-ext/source/SecuTrade.cpp
+	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/source/SecuTrade.cpp -o source/SecuTrade.lo 
+source/SecuMD.lo: /Users/caizixin/source/php-t2sdk-ext/source/SecuMD.cpp
+	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/source/SecuMD.cpp -o source/SecuMD.lo 
+Common/tool.lo: /Users/caizixin/source/php-t2sdk-ext/Common/tool.cpp
+	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/Common/tool.cpp -o Common/tool.lo 
+Common/analyStr.lo: /Users/caizixin/source/php-t2sdk-ext/Common/analyStr.cpp
+	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/Users/caizixin/source/php-t2sdk-ext $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /Users/caizixin/source/php-t2sdk-ext/Common/analyStr.cpp -o Common/analyStr.lo 
 $(phplibdir)/t2sdk.la: ./t2sdk.la
 	$(LIBTOOL) --mode=install cp ./t2sdk.la $(phplibdir)
 

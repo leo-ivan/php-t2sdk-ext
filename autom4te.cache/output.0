@@ -830,6 +830,7 @@ enable_option_checking
 with_libdir
 with_php_config
 enable_t2sdk
+enable_debug
 enable_shared
 enable_static
 enable_fast_install
@@ -1469,6 +1470,7 @@ Optional Features and Packages:
   --with-libdir=NAME      Look for libraries in .../NAME rather than .../lib
   --with-php-config=PATH  Path to php-config php-config
    --enable-t2sdk           Enable t2sdk support
+   --enable-debug          compile with debugging symbols
   --enable-shared=PKGS    Build shared libraries default=yes
   --enable-static=PKGS    Build static libraries default=yes
   --enable-fast-install=PKGS
@@ -4618,7 +4620,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
   old_IFS=$IFS
-  for ac_src in t2sdk.cc source/T2Connection.cc source/CCallback.cc; do
+  for ac_src in t2sdk.cpp source/T2Connection.cpp source/SecuTrade.cpp source/SecuMD.cpp Common/tool.cpp Common/analyStr.cpp; do
   
       IFS=.
       set $ac_src
@@ -4667,7 +4669,7 @@ EOF
 
 
   old_IFS=$IFS
-  for ac_src in t2sdk.cc source/T2Connection.cc source/CCallback.cc; do
+  for ac_src in t2sdk.cpp source/T2Connection.cpp source/SecuTrade.cpp source/SecuMD.cpp Common/tool.cpp Common/analyStr.cpp; do
   
       IFS=.
       set $ac_src
@@ -4797,7 +4799,7 @@ _ACEOF
 
 
   old_IFS=$IFS
-  for ac_src in t2sdk.cc source/T2Connection.cc source/CCallback.cc; do
+  for ac_src in t2sdk.cpp source/T2Connection.cpp source/SecuTrade.cpp source/SecuMD.cpp Common/tool.cpp Common/analyStr.cpp; do
   
       IFS=.
       set $ac_src
@@ -4843,7 +4845,7 @@ EOF
 
 
   old_IFS=$IFS
-  for ac_src in t2sdk.cc source/T2Connection.cc source/CCallback.cc; do
+  for ac_src in t2sdk.cpp source/T2Connection.cpp source/SecuTrade.cpp source/SecuMD.cpp Common/tool.cpp Common/analyStr.cpp; do
   
       IFS=.
       set $ac_src
@@ -4884,6 +4886,19 @@ EOF
   fi
 
 fi
+
+if test -z "$PHP_DEBUG"; then   
+    @%:@ Check whether --enable-debug was given.
+if test "${enable_debug+set}" = set; then :
+  enableval=$enable_debug;   
+        PHP_DEBUG=$enableval  
+    
+else
+   PHP_DEBUG=no  
+    
+fi
+  
+fi 
 
 
 enable_static=no

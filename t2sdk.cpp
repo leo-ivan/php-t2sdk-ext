@@ -711,20 +711,20 @@ PHP_METHOD(T2Connection, p_req339200)
     t2connection_object *obj = (t2connection_object *)zend_object_store_get_object(
         getThis() TSRMLS_CC);
     
-    int start_date;
+    int begin_date;
     int end_date;
     char *position_str;
     int position_str_len;
     int request_num;
 
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "llsl", &start_date, &end_date, &position_str, &position_str_len, &request_num) == FAILURE) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "llsl", &begin_date, &end_date, &position_str, &position_str_len, &request_num) == FAILURE) {
         RETURN_NULL();
     }
 
     zval * result;
     t2connection = obj->t2connection;
     if (t2connection != NULL) {
-        result = t2connection->req339200(start_date, end_date, position_str, request_num);
+        result = t2connection->req339200(begin_date, end_date, position_str, request_num);
     }
 
     RETURN_ZVAL(result, 1, 0);
