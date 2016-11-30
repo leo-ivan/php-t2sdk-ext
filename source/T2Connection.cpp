@@ -2183,7 +2183,7 @@ zval* T2Connection::req339300(int start_date, int end_date, char *position_str, 
 
     pPacker->AddInt(start_date);
     pPacker->AddInt(end_date);
-    pPacker->AddChar('0');
+    pPacker->AddChar('1');
     pPacker->AddStr(" ");
     pPacker->AddStr(" ");
     pPacker->AddStr(" ");
