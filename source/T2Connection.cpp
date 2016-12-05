@@ -95,7 +95,7 @@ zval * packToZval(IF2UnPacker *pUnPacker)
                     case 'F':
                     //printf("%20f", pUnPacker->GetDoubleByIndex(k));
                     fvalue = pUnPacker->GetDoubleByIndex(k);
-                    sprintf(svalue, "%s", fvalue);
+                    sprintf(svalue, "%.3f", fvalue);
                     add_assoc_string(arr, col_name, svalue, 1);
                     break;
                     
